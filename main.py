@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, render_template
+from flask import Flask, request, redirect, render_template, url_for
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -67,7 +67,8 @@ def welcome():
         email_error = False
 
     if name_error or password_error or match_error or email_error:
-        return redirect("/", username=username, name_error=name_error, password_error=password_error, match_error=match_error, email_error=email_error)
+        return render_template("index.html", username=username, email=email, name_error=name_error, 
+        password_error=password_error, match_error=match_error, email_error=email_error)
 
     return render_template("welcome.html", username=username)
 
