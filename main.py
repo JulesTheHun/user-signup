@@ -72,26 +72,13 @@ def welcome():
         match_error = False
 
     if name_error or password_error or match_error or email_error:
-        return redirect(url_for("index2", username=username, email=email, name_error=name_error, 
-        password_error=password_error, match_error=match_error, email_error=email_error), code=307)
+        return render_template("index.html", username=username, email=email, name_error=name_error, 
+        password_error=password_error, match_error=match_error, email_error=email_error)
 
     return render_template("welcome.html", username=username)
 
 @app.route("/")
 def index():
     return render_template("index.html", username="", email="")
-
-@app.route("/", methods=['GET', 'POST'])
-def index2():
-    name_error = request.form['username']
-    password_error = request.form['password_error']
-    match_error = request.form['match_error']
-    email_error = request.form['email_error']
-
-    username = request.form['username']
-    email = request.form['email']
-            
-    return render_template("index.html", username=username, email=email, name_error=name_error, 
-    password_error=password_error, match_error=match_error, email_error=email_error)
 
 app.run()
