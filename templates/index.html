@@ -4,7 +4,7 @@
 <h1>Signup</h1>
 <form action="/welcome" method="post">
     <label>Username
-        <input type="text" name="username" />
+        <input type="text" name="username" value="{{username}}"/>
     </label>
     {% if name_error %}
     <span class="error">That's not a valid username</span>
@@ -25,7 +25,7 @@
     {% endif %}
     <br/>
     <label>Email (optional)
-        <input type="text" name="email" />
+        <input type="text" name="email" value="{{email}}"/>
     </label>
     {% if email_error %}
     <span class="error">That's not a valid email</span>
