@@ -60,16 +60,16 @@ def welcome():
     else:
         username = ""
 
-    if email_validate(email) or email == "":
-        email_error = False
-    else:
-        email = ""
-
     if basic_validate(password1):
         password_error = False
 
     if match_validate(password1, password2):
         match_error = False
+
+    if email_validate(email):
+        email_error = False
+    else:
+        email = ""
 
     if name_error or password_error or match_error or email_error:
         return render_template("index.html", username=username, email=email, name_error=name_error, 
